@@ -322,6 +322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1855701636}
     m_Modifications:
+    - target: {fileID: 1206404976242510743, guid: fcc43a8dd6bd54a4cb4783f690c044c5,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1370850612259296445, guid: fcc43a8dd6bd54a4cb4783f690c044c5,
         type: 3}
       propertyPath: m_textInfo.lineCount
@@ -1707,6 +1712,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1855701636}
     m_Modifications:
+    - target: {fileID: 1206404976242510743, guid: fcc43a8dd6bd54a4cb4783f690c044c5,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1269038721020868647, guid: fcc43a8dd6bd54a4cb4783f690c044c5,
         type: 3}
       propertyPath: m_Enabled
