@@ -8,6 +8,8 @@ public class ShopItem : ScriptableObject
     public string itemName;
     [Multiline(3)]
     public string description;
+    public int buyPrice;
+    public int sellPrice;
 
     public Sprite icon;
     public Color color = Color.white;
