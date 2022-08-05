@@ -34,11 +34,10 @@ public class Oscillator : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             gain = volume;
-            freq = 30;
-            //freq = frequencies[thisFreq];
-            //thisFreq++;
+            freq = frequencies[thisFreq];
+            thisFreq++;
 
-            if(thisFreq >= frequencies.Length)
+            if (thisFreq >= frequencies.Length)
             {
                 thisFreq = 0;
             }
