@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Oscillator : MonoBehaviour
+public class Oscillator : Module
 {
     public double freq;
 
@@ -15,6 +15,12 @@ public class Oscillator : MonoBehaviour
 
     //public float[] frequencies;
     //public int thisFreq;
+
+    public override void InteractToggle()
+    {
+        this.uiOpen = !this.uiOpen;
+        this.UI.SetActive(!this.UI.activeSelf);
+    }
 
     private void Start()
     {

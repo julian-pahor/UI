@@ -130,9 +130,6 @@ namespace StarterAssets
         {
 			RaycastHit hit;
 			int layerMask = 1 << 8;
-
-
-
 			Vector3 heightVec = new Vector3(0, height * 0.6f, 0);
 
 			if(Physics.Raycast(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward), out hit, 5, layerMask))
@@ -140,6 +137,23 @@ namespace StarterAssets
 				//Debug.DrawRay(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
 				//Debug.Log("Interactable");
 				interactable = true;
+
+				Module hitModule = hit.collider.gameObject.GetComponent<Module>();
+
+				if(hitModule != null)
+                {
+					if (_input.interact)
+					{
+						hitModule.InteractToggle();
+						_input.interact = false;
+					}
+					
+					if(hitModule.uiOpen)
+                    {
+						interactable = false;
+                    }
+				}
+
 				
             }
             else
@@ -147,7 +161,7 @@ namespace StarterAssets
 				//Debug.DrawRay(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward) * 10, Color.red);
 				//Debug.Log("Not Interactable");
 				interactable = false;
-				
+				_input.interact = false;
             }
 
 			interactUI.Toggle(interactable);
