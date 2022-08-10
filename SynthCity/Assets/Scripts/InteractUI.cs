@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class InteractUI : MonoBehaviour
 {
-    public StarterAssets.FirstPersonController player;
 
-    void Update()
+    public void Toggle(bool toggle)
     {
-        Debug.Log(player.interactable);
-
-        if (player != null)
-        {
-            this.gameObject.SetActive(player.interactable);
-        }
+        gameObject.SetActive(toggle);
     }
 }

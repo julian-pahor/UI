@@ -14,7 +14,6 @@ public class SettingsUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         masterSlider.slider.value = settings.masterVolume;
-
     }
 
     

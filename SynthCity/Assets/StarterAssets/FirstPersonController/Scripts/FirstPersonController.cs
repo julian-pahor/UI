@@ -67,6 +67,7 @@ namespace StarterAssets
 		//Interaction flags
 		public bool interactable;
 		private float height;
+		public InteractUI interactUI;
 
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -134,20 +135,23 @@ namespace StarterAssets
 
 			Vector3 heightVec = new Vector3(0, height * 0.6f, 0);
 
-			if(Physics.Raycast(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward), out hit, 8, layerMask))
+			if(Physics.Raycast(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward), out hit, 5, layerMask))
             {
-				Debug.DrawRay(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-				Debug.Log("Interactable");
+				//Debug.DrawRay(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
+				//Debug.Log("Interactable");
 				interactable = true;
 				
             }
             else
             {
-				Debug.DrawRay(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward) * 10, Color.red);
-				Debug.Log("Not Interactable");
+				//Debug.DrawRay(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward) * 10, Color.red);
+				//Debug.Log("Not Interactable");
 				interactable = false;
+				
             }
-        }
+
+			interactUI.Toggle(interactable);
+		}
 
         private void LateUpdate()
 		{
