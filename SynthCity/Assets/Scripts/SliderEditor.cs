@@ -10,6 +10,4 @@ public class SliderEditor : MonoBehaviour
     public Slider slider;
     public TMP_InputField input;
     public string formatS = "NULL";
-
-    
 }

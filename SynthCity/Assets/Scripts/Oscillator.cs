@@ -15,6 +15,8 @@ public class Oscillator : Module
 
     //public float[] frequencies;
     //public int thisFreq;
+    
+    
 
     public override void InteractToggle()
     {
@@ -24,6 +26,12 @@ public class Oscillator : Module
 
     private void Start()
     {
+        if(UI.activeSelf)
+        {
+            this.UI.SetActive(false);
+            this.uiOpen = false;
+        }
+        
         //frequencies = new float[8];
         //frequencies[0] = 440;
         //frequencies[1] = 494;
@@ -38,6 +46,7 @@ public class Oscillator : Module
     private void Update()
     {
         gain = volume;
+
         //freq = frequencies[thisFreq];
         //thisFreq++;
 

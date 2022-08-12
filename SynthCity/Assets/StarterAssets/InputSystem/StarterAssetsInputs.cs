@@ -10,9 +10,12 @@ namespace StarterAssets
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
+		public Vector2 scroll;
 		public bool jump;
 		public bool sprint;
 		public bool interact;
+		public bool moduleKey;
+		public bool click;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -46,23 +49,58 @@ namespace StarterAssets
 			SprintInput(value.isPressed);
 		}
 
+		public void OnScroll(InputValue value)
+        {
+			ScrollInput(value.Get<Vector2>());
+        }
+
 		public void OnPause(InputValue value)
         {
 			cursorLocked = !cursorLocked;
 			SetCursorState(cursorLocked);
-			cursorInputForLook = !cursorInputForLook;
-            
+			cursorInputForLook = !cursorInputForLook;   
         }
 
 		public void OnInteract(InputValue value)
         {
 			InteractInput(value.isPressed);
         }
+
+		public void OnModuleKey(InputValue value)
+        {
+			ModuleInput(value.isPressed);
+        }
+		
+		public void OnModuleMouseToggle()
+        {
+			cursorLocked = !cursorLocked;
+			SetCursorState(cursorLocked);
+			cursorInputForLook = !cursorInputForLook;
+		}
+
+		public void OnClick(InputValue value)
+        {
+			ClickInput(value.isPressed);
+        }
+
 #endif
+		public void ScrollInput(Vector2 newScroll)
+        {
+			scroll = newScroll;
+        }
+		public void ClickInput(bool newClick)
+        {
+			click = newClick;
+        }
 		public void InteractInput(bool newInteraction)
         {
 			interact = newInteraction;
         }
+
+		public void ModuleInput(bool newInput)
+		{
+			moduleKey = newInput;
+		}
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{

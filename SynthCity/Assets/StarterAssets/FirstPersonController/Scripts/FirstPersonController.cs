@@ -64,18 +64,27 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+
+
 		//Interaction flags
 		public bool interactable;
-		private float height;
+		public float height;
 		public InteractUI interactUI;
 
-	
+		//ModuleMaking flags
+		public bool openMaker;
+		public ModuleMaker moduleMaker;
+
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
+		public StarterAssetsInputs input() { return _input; }
+
 		private GameObject _mainCamera;
+		public GameObject mainCamera() { return _mainCamera; }
 
 		private const float _threshold = 0.01f;
 
@@ -99,6 +108,8 @@ namespace StarterAssets
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
 
+			_input = GetComponent<StarterAssetsInputs>();
+
 			//Obtain height information from Collider
 			//Used for Raycasting
 			height = transform.GetComponentInChildren<CapsuleCollider>().height;
@@ -107,7 +118,7 @@ namespace StarterAssets
 		private void Start()
 		{
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 			_playerInput = GetComponent<PlayerInput>();
 #else
@@ -126,11 +137,38 @@ namespace StarterAssets
 			Move();
 		}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public void MouseToggle()
+        {
+			_input.OnModuleMouseToggle();
+		}
         private void FixedUpdate()
         {
 			RaycastHit hit;
 			int layerMask = 1 << 8;
 			Vector3 heightVec = new Vector3(0, height * 0.6f, 0);
+			//if input key is read and the gameobject is set to false
+			if(_input.moduleKey && !moduleMaker.online)
+            {
+				moduleMaker.SetAllChildrenActive();
+				_input.moduleKey = false;
+				MouseToggle();
+            }
+
+			
 
 			if(Physics.Raycast(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward), out hit, 5, layerMask))
             {
@@ -147,14 +185,11 @@ namespace StarterAssets
 						hitModule.InteractToggle();
 						_input.interact = false;
 					}
-					
 					if(hitModule.uiOpen)
                     {
 						interactable = false;
                     }
-				}
-
-				
+				}	
             }
             else
             {
@@ -166,6 +201,13 @@ namespace StarterAssets
 
 			interactUI.Toggle(interactable);
 		}
+
+
+
+
+
+
+
 
         private void LateUpdate()
 		{
