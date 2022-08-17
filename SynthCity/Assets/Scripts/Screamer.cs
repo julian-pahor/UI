@@ -8,6 +8,7 @@ public class Screamer : Module
     public float pitch;
     public bool loop = false;
     public bool pitchSlide = false;
+    public bool pitchInteracting = false;
 
     public AudioClip[] screams;
 
@@ -37,20 +38,25 @@ public class Screamer : Module
         {
             source.Play();
         }
-
         source.pitch = pitch;
         source.volume = volume;
         source.loop = loop;
 
-        if(pitchSlide)
+
+
+        if(pitchSlide && !pitchInteracting)
         {
-            if(source.pitch > 1)
+            if(source.pitch > 1.01)
             {
-                source.pitch -= 0.001f;
+                pitch -= 0.0005f;
             }
-            else if (source.pitch < 1 )
+            else if (source.pitch < 0.99 )
             {
-                source.pitch += 0.001f;
+                pitch += 0.0005f;
+            }
+            else
+            {
+                pitch = 1;
             }
         }
     }

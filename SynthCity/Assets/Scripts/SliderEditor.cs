@@ -10,4 +10,15 @@ public class SliderEditor : MonoBehaviour
     public Slider slider;
     public TMP_InputField input;
     public string formatS = "NULL";
+    public bool changing;
+
+    public void DragBegin()
+    {
+        changing = true;
+    }
+
+    public void DragEnd()
+    {
+        changing = false;
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class ScreamerUI : MonoBehaviour
@@ -15,18 +16,21 @@ public class ScreamerUI : MonoBehaviour
     public Toggle loopToggle;
     public Toggle pitchToggle;
 
-    public bool looping;
-    public bool pitchSliding;
 
     // Start is called before the first frame update
     void Start()
     {
         pitchSlider.slider.value = screamer.pitch;
         volumeSlider.slider.value = screamer.volume;
-        looping = screamer.loop;
-        pitchSliding = screamer.pitchSlide;
+        loopToggle.isOn = screamer.loop;
+        pitchToggle.isOn = screamer.pitchSlide;
     }
 
+    private void Update()
+    {
+        pitchSlider.slider.value = screamer.pitch;
+        screamer.pitchInteracting = pitchSlider.changing;
+    }
     public void OnPitchChange(float value)
     {
         screamer.pitch = value;
@@ -53,5 +57,6 @@ public class ScreamerUI : MonoBehaviour
     {
         screamer.pitchSlide = value;
     }
+
     
 }
