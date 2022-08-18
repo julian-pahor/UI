@@ -7,7 +7,6 @@ public class SpectrumUI : MonoBehaviour
 {
     public Spectrum spectrum;
     public SpectrumBar bar;
-    public Material[] colors;
 
     public float smoothTime = 0.3f;
 
@@ -36,7 +35,6 @@ public class SpectrumUI : MonoBehaviour
             {
                 clone = Instantiate(bar, this.transform);
                 barChildren[j] = clone;
-                clone.GetComponent<Image>().material = colors[Random.Range(0, colors.Length - 1)];
                 j++;
             }
             

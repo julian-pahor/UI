@@ -48,11 +48,11 @@ public class Screamer : Module
         {
             if(source.pitch > 1.01)
             {
-                pitch -= 0.0005f;
+                pitch -= 0.005f;
             }
             else if (source.pitch < 0.99 )
             {
-                pitch += 0.0005f;
+                pitch += 0.005f;
             }
             else
             {

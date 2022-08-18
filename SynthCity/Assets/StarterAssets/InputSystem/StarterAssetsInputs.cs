@@ -71,11 +71,12 @@ namespace StarterAssets
 			ModuleInput(value.isPressed);
         }
 		
-		public void OnModuleMouseToggle()
+		public void OnMouseToggle()
         {
 			cursorLocked = !cursorLocked;
 			SetCursorState(cursorLocked);
 			cursorInputForLook = !cursorInputForLook;
+			LookInput(new Vector2 (0, 0));
 		}
 
 		public void OnClick(InputValue value)

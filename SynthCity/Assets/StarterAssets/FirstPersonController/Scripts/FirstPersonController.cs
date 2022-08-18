@@ -153,7 +153,7 @@ namespace StarterAssets
 
 		public void MouseToggle()
         {
-			_input.OnModuleMouseToggle();
+			_input.OnMouseToggle();
 		}
         private void FixedUpdate()
         {
@@ -161,19 +161,25 @@ namespace StarterAssets
 			int layerMask = 1 << 8;
 			Vector3 heightVec = new Vector3(0, height * 0.6f, 0);
 			//if input key is read and the gameobject is set to false
-			if(_input.moduleKey && !moduleMaker.online)
+
+			if(_input.moduleKey)
             {
-				moduleMaker.SetAllChildrenActive();
-				_input.moduleKey = false;
-				MouseToggle();
+				if(!moduleMaker.online)
+                {
+					moduleMaker.SetAllChildrenActive();
+					_input.moduleKey = false;
+					MouseToggle();
+				}
+                else
+                {
+					moduleMaker.SetAllChildrenInactive();
+					_input.moduleKey = false;
+					MouseToggle();
+                }
+				
             }
-
-			
-
 			if(Physics.Raycast(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward), out hit, 5, layerMask))
             {
-				//Debug.DrawRay(transform.position + heightVec, _mainCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-				//Debug.Log("Interactable");
 				interactable = true;
 
 				Module hitModule = hit.collider.gameObject.GetComponent<Module>();

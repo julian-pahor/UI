@@ -30,6 +30,7 @@ public class ModuleMaker : MonoBehaviour
     public bool online = false;
 
     private bool placing;
+    public GameObject placementUI;
 
     private StarterAssets.FirstPersonController gameController;
     private StarterAssets.StarterAssetsInputs gameInputs;
@@ -76,6 +77,16 @@ public class ModuleMaker : MonoBehaviour
 
     private void Update()
     {
+
+        if(placing)
+        {
+            placementUI.SetActive(true);
+        }
+        else
+        {
+            placementUI.SetActive(false);
+        }
+
         if(clone != null)
         {
             float distance = Vector3.Distance(clone.transform.position, player.transform.position);
@@ -100,10 +111,6 @@ public class ModuleMaker : MonoBehaviour
             }
             
         }
-
-
-        ////Only Y value matters, scroll forward = 120, backwards = -120
-        //Debug.Log("Scroll.x = " + gameInputs.scroll.x + " Scroll.y = " + gameInputs.scroll.y);
 
         if(gameInputs.click)
         {
