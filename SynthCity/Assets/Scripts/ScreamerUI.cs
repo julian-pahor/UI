@@ -20,6 +20,7 @@ public class ScreamerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Sets all UI to the base starting values read from the backend
         pitchSlider.slider.value = screamer.pitch;
         volumeSlider.slider.value = screamer.volume;
         loopToggle.isOn = screamer.loop;
@@ -28,9 +29,13 @@ public class ScreamerUI : MonoBehaviour
 
     private void Update()
     {
+        //Update here is used to update the frontend pitch position when pitch sliding is active
         pitchSlider.slider.value = screamer.pitch;
+        //Updates a bool using an event trigger in the slider to detect whether the value is being changed or not
         screamer.pitchInteracting = pitchSlider.changing;
     }
+
+    //All functions below are for the frontend -> backend communication of values
     public void OnPitchChange(float value)
     {
         screamer.pitch = value;

@@ -12,9 +12,6 @@ public class Oscillator : Module
 
     public float gain;
     public float volume = 0.3f;
-
-    //public float[] frequencies;
-    //public int thisFreq;
     
     
 
@@ -32,28 +29,11 @@ public class Oscillator : Module
             this.uiOpen = false;
         }
         
-        //frequencies = new float[8];
-        //frequencies[0] = 440;
-        //frequencies[1] = 494;
-        //frequencies[2] = 554;
-        //frequencies[3] = 587;
-        //frequencies[4] = 659;
-        //frequencies[5] = 740;
-        //frequencies[6] = 831;
-        //frequencies[7] = 880;
     }
 
     private void Update()
     {
         gain = volume;
-
-        //freq = frequencies[thisFreq];
-        //thisFreq++;
-
-        //if (thisFreq >= frequencies.Length)
-        //{
-        //    thisFreq = 0;
-        //}
     }
         
     private void OnAudioFilterRead(float[] data, int channels)
@@ -64,8 +44,8 @@ public class Oscillator : Module
         {
             phase += increment;
 
-            //Sin Wave
-            data[i] = (float)(gain * Mathf.Sin((float)phase));
+            ////Sin Wave
+            //data[i] = (float)(gain * Mathf.Sin((float)phase));
 
             //Square Wave
             //if (gain * Mathf.Sin((float)phase) >= 0 * gain)
@@ -77,8 +57,8 @@ public class Oscillator : Module
             //    data[i] = (-(float)gain) * 0.6f;
             //}
 
-            ////Triangle Wave
-            //data[i] += (float) (gain * (double) Mathf.PingPong((float)phase, 1.0f));
+            //Triangle Wave
+            data[i] += (float)(gain * (double)Mathf.PingPong((float)phase, 1.0f));
 
             //make it stereo 
             if (channels == 2)

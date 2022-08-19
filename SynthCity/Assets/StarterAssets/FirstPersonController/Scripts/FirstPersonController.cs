@@ -64,6 +64,12 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+
+
+		//Large spaces are to seperate the unity standard asset code and my written code
+
+
+
 		//Interaction flags
 		public bool interactable;
 		public float height;
@@ -72,6 +78,13 @@ namespace StarterAssets
 		//ModuleMaking flags
 		public bool openMaker;
 		public ModuleMaker moduleMaker;
+
+
+
+		//Large spaces are to seperate the unity standard asset code and my written code
+
+
+
 
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -150,7 +163,7 @@ namespace StarterAssets
 
 
 
-
+		//Large spaces are to seperate the unity standard asset code and my written code
 
 
 
@@ -226,10 +239,12 @@ namespace StarterAssets
 
 
 
+		//Large spaces are to seperate the unity standard asset code and my written code
 
 
 
-        private void LateUpdate()
+
+		private void LateUpdate()
 		{
 			CameraRotation();
 		}

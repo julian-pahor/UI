@@ -257,11 +257,11 @@
                 },
                 {
                     "name": "",
-                    "id": "d0827002-a80c-4ddd-a82b-ee8e372ca9b6",
-                    "path": "<Keyboard>/p",
+                    "id": "73e9db69-6745-4c1b-98b2-d58a73fc1c6a",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
+                    "groups": "",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

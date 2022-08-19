@@ -11,7 +11,8 @@ public class SliderEditor : MonoBehaviour
     public TMP_InputField input;
     public string formatS = "NULL";
     public bool changing;
-
+    
+    //Used for a prebuilt Slider prefab, provides a good foundation for multiple different UI's to use it
     public void DragBegin()
     {
         changing = true;

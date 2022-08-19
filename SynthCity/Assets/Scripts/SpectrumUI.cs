@@ -28,13 +28,14 @@ public class SpectrumUI : MonoBehaviour
 
         int j = 0;
 
+        //Creates all the bars needed for spectrum data to be passed to
         for(int i = 0; i < spectrumData.Length - 1; i++)
         {
             
-            if(i % 4 == 0)
+            if(i % 4 == 0) //creating 4 times less bars than amount of individual pieces of spectrum data
             {
                 clone = Instantiate(bar, this.transform);
-                barChildren[j] = clone;
+                barChildren[j] = clone; //Adds the created bars to the bar array
                 clone = null;
                 j++;
             }
@@ -48,8 +49,10 @@ public class SpectrumUI : MonoBehaviour
 
         for (int i = 0; i < barChildren.Length - 1; i++)
         {
+            //Averages the spectrum data in groups of 4 to pass to each bar
             barData = spectrumData[i] + spectrumData[i + 1] + spectrumData[i + 2] + spectrumData[i + 3];
             barData /= 4;
+            //Actual data coming out of data is exceptionally small so we use Log to normalises to a appropriate level based off of size values in the rect transform
             barData = Mathf.Clamp(((Mathf.Log(barData) * 35) + (height * 1.2f)), 0, height);
             barChildren[i].SetTarget(barData);
         }

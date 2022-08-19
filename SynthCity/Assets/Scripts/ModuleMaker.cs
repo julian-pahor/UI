@@ -37,11 +37,14 @@ public class ModuleMaker : MonoBehaviour
 
     private void Start()
     {
+        //Sets all children innactive in order to hide the UI from the screen
         SetAllChildrenInactive();
 
+        //Gains reference to the player controller for the input
         gameController = player.GetComponent<StarterAssets.FirstPersonController>();
         gameInputs = gameController.input();
 
+        //Creates functions for each button, attaching a module to spawn for each individual button
         button1.onClick.AddListener(delegate { SpawnModule(module1); });
         button2.onClick.AddListener(delegate { SpawnModule(module2); });
         button3.onClick.AddListener(delegate { SpawnModule(module3); });
@@ -49,6 +52,7 @@ public class ModuleMaker : MonoBehaviour
         button5.onClick.AddListener(delegate { SpawnModule(module5); });
         button6.onClick.AddListener(delegate { SpawnModule(module6); });
 
+        //Fills in button text with the name of the module 
         if(button1.GetComponentInChildren<TextMeshProUGUI>() != null)
         {
             button1.GetComponentInChildren<TextMeshProUGUI>().text = module1.name;
@@ -77,7 +81,7 @@ public class ModuleMaker : MonoBehaviour
 
     private void Update()
     {
-
+        //While setting the position of object to spawn it enables a tooltip for player controls refrence
         if(placing)
         {
             placementUI.SetActive(true);
@@ -87,6 +91,7 @@ public class ModuleMaker : MonoBehaviour
             placementUI.SetActive(false);
         }
 
+        //Uses the scrollwheel input to change the distance of the object being placed
         if(clone != null)
         {
             float distance = Vector3.Distance(clone.transform.position, player.transform.position);
@@ -112,6 +117,7 @@ public class ModuleMaker : MonoBehaviour
             
         }
 
+        //If the input reads a click it finalises the placement of a module
         if(gameInputs.click)
         {
             Place();
@@ -122,7 +128,11 @@ public class ModuleMaker : MonoBehaviour
 
     public void SpawnModule(GameObject module)
     {
+        //Function called by pressing a button on the UI
+        //Sets the UI to inactive so players can see the screen
         SetAllChildrenInactive();
+
+        //uses a ray to position a spawned wireframe, so as the player can see physically where the module will be placed 
         Vector3 rayStart = player.transform.position;
         rayStart.y = gameController.height * 0.8f;
 
@@ -131,6 +141,7 @@ public class ModuleMaker : MonoBehaviour
         
         if(module.GetComponent<Module>() != null)
         {
+            //Creates the Modules wireframe and enables the placing flag 
             clone = Instantiate(module.GetComponent<Module>().wireFrame, offset, player.transform.rotation, gameController.mainCamera().transform);
             placing = true;
             currentModule = module;
@@ -141,12 +152,14 @@ public class ModuleMaker : MonoBehaviour
             Debug.Log("GameObject to instantiate was not a Module Object!");
         }
 
+        //Turns off the mouse so that players regain "look" control
         gameController.MouseToggle();
 
     }
 
     public void SetAllChildrenInactive()
     {
+        
         foreach(Transform child in this.transform)
         {
             child.gameObject.SetActive(false);
@@ -165,6 +178,7 @@ public class ModuleMaker : MonoBehaviour
 
     public void Place()
     {
+        //Creates the real module in place of the wireframe and destroys the wireframe that was existing to show placement position
         if(placing && currentModule != null)
         {
             Instantiate(currentModule, clone.transform.position, clone.transform.rotation);

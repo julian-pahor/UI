@@ -9,7 +9,7 @@ public class SettingsUI : MonoBehaviour
 
     public SliderEditor masterSlider;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         gameObject.SetActive(false);

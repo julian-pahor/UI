@@ -11,15 +11,15 @@ public class OscillatorUI : MonoBehaviour
     public SliderEditor fineSlider;
     public SliderEditor volumeSlider;
 
-    public bool keyboardMode;
-    // Start is called before the first frame update
     void Start()
     {
-        //gameObject.SetActive(false);
+        //Intialise all front end UI values from the backend
         freqSlider.slider.value = (float) osc.freq;
         volumeSlider.slider.value = (float) osc.volume;
         fineSlider.slider.value = 0;
     }
+
+    //All functions below are to update the backend values from frontend UI interaction
 
     public void OnFreqChange(float value)
     {
@@ -41,10 +41,5 @@ public class OscillatorUI : MonoBehaviour
         osc.volume = value;
         float volumeV = volumeSlider.slider.value;
         volumeSlider.input.text = volumeV.ToString();
-    }
-
-    public void Toggle()
-    {
-
     }
 }
