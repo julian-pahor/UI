@@ -46,7 +46,7 @@ public class SpectrumBar : MonoBehaviour
         }
         
 
-        Debug.Log(targetY);
+        //Debug.Log(targetY);
     }
 
     public void SetTarget(float target)

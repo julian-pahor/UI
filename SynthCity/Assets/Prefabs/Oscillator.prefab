@@ -1314,7 +1314,7 @@ MonoBehaviour:
   uiOpen: 0
   freq: 100
   gain: 0
-  volume: 0.2
+  volume: 0.1
 --- !u!1 &7899928974663814948
 GameObject:
   m_ObjectHideFlags: 0

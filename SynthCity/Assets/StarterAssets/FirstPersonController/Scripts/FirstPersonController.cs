@@ -64,8 +64,6 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-
-
 		//Interaction flags
 		public bool interactable;
 		public float height;
@@ -128,6 +126,13 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			//Unlocks the mouse at start for disclaimer accepting
+			if(_input.cursorLocked)
+            {
+				MouseToggle();
+			}
+			
 		}
 
 		private void Update()
@@ -168,13 +173,23 @@ namespace StarterAssets
                 {
 					moduleMaker.SetAllChildrenActive();
 					_input.moduleKey = false;
-					MouseToggle();
+
+					if(_input.cursorLocked)
+                    {
+						MouseToggle();
+					}
+					
 				}
                 else
                 {
 					moduleMaker.SetAllChildrenInactive();
 					_input.moduleKey = false;
-					MouseToggle();
+
+					if(!_input.cursorLocked)
+                    {
+						MouseToggle();
+					}
+					
                 }
 				
             }
@@ -204,7 +219,6 @@ namespace StarterAssets
 				interactable = false;
 				_input.interact = false;
             }
-
 			interactUI.Toggle(interactable);
 		}
 

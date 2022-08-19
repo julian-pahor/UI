@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Oscillator.cs" />
     <Compile Include="Assets\Scripts\Spectrum.cs" />
     <Compile Include="Assets\Scripts\OscillatorUI.cs" />
+    <Compile Include="Assets\Scripts\SpectrumBar.cs" />
     <Compile Include="Assets\Scripts\SettingsUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\SpectrumAnalyser.cs" />
     <Compile Include="Assets\Scripts\InteractUI.cs" />
     <Compile Include="Assets\Scripts\SliderEditor.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
@@ -109,8 +111,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Scripts\SpectrumBar.cs" />
-    <Compile Include="Assets\Scripts\SpectrumAnalyser.cs" />
+    <Compile Include="Assets\Scripts\DisclaimerFade.cs" />
+    <Compile Include="Assets\Scripts\WavyScale.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

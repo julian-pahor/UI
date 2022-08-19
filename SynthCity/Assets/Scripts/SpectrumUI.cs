@@ -23,7 +23,7 @@ public class SpectrumUI : MonoBehaviour
     void Start()
     {
         rt = this.GetComponent<RectTransform>();
-        barChildren = new SpectrumBar[spectrumData.Length];
+        barChildren = new SpectrumBar[spectrumData.Length / 4];
         height = rt.rect.height;
 
         int j = 0;
@@ -35,6 +35,7 @@ public class SpectrumUI : MonoBehaviour
             {
                 clone = Instantiate(bar, this.transform);
                 barChildren[j] = clone;
+                clone = null;
                 j++;
             }
             

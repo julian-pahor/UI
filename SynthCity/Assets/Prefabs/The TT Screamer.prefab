@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3309839317292065948}
   - component: {fileID: 3309839317292065922}
   m_Layer: 8
-  m_Name: TheTTScreamer
+  m_Name: The TT Screamer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   UI: {fileID: 3309839318807020108}
   wireFrame: {fileID: 899428459418414007, guid: e5f4daf24146ee040b5a2d7a73b30aa0, type: 3}
   uiOpen: 0
-  volume: 0.3
+  volume: 0.1
   pitch: 1
   loop: 0
   pitchSlide: 0
@@ -2091,7 +2091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 195775069750593747, guid: 5a5b1b755f265d047a1a0c53fa87fe66, type: 3}
       propertyPath: m_MaxValue
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 195775069750593747, guid: 5a5b1b755f265d047a1a0c53fa87fe66, type: 3}
       propertyPath: m_MinValue
